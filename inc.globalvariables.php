@@ -6,9 +6,9 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE );
 // Local
 
 $dbhost='localhost';		
-$dbuser='root';
-$dbpass='';
-$dbname='lingerieoutletstore';
+$dbuser='loutlet_lostore';
+$dbpass='ds3c&2ses^7';
+$dbname='loutlet_tloutlet2012new';
 
 // live
 /*
