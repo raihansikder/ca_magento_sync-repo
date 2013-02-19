@@ -215,6 +215,11 @@ function myprint_r($my_array) {
     echo $my_array;
 }
 
+function myprint_o($my_object){
+	print '<pre>';
+	var_export($my_object);
+	print '</pre>';
+}
 function makeRandomKey(){
 	$charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYsdfZ0123456789";
 	//if ($useupper) $charset .= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
