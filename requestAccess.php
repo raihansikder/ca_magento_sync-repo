@@ -1,6 +1,7 @@
 <?php
 /*
 *	http://developer.channeladvisor.com/display/cadn/PHP+GetInventoryQuantity
+*   This files needs to be put in a web server and access to make a request
 */
 $client = new SoapClient("https://api.channeladvisor.com/ChannelAdvisorAPI/v6/AdminService.asmx?WSDL");
 $hData = array('DeveloperKey' => "5dbb05c3-25bd-40cd-8d0b-bb756614cce3", 'Password' => "Razon!@#1");

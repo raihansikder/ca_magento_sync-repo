@@ -29,7 +29,7 @@ function mysql_fetch_rowsarr($result, $numass=MYSQL_BOTH) {
 /*
 *	Converts datetime to timestamp
 */
-function convertMySQLDatetimetoTimestamp($MySQLDatetime) {          
+function convertMySQLDatetimetoTimestamp($MySQLDatetime) {
     list($date, $time) = explode(' ', $MySQLDatetime);
     list($year, $month, $day) = explode('-', $date);
     list($hour, $minute, $second) = explode(':', $time);
@@ -48,7 +48,7 @@ function convertMySQLDatetimetoTimestamp($MySQLDatetime) {
 *	Converts date to timestamp
 */
 
-function convertMySQLDateToTimestamp($MySQLDate) {				
+function convertMySQLDateToTimestamp($MySQLDate) {
     list($year, $month, $day) = explode('-', $MySQLDate);
     $timestamp = mktime('00','00', '00', $month, $day, $year);
     return $timestamp;
@@ -65,7 +65,7 @@ function getDateTime(){
 /***********************************************************/
 
 /*
-*	function that returns birthday	
+*	function that returns birthday
 */
 function ageFromBirthDate ($MySQLDate){
 	list($year,$month,$day) = explode("-",$MySQLDate);
@@ -77,14 +77,14 @@ function ageFromBirthDate ($MySQLDate){
 	return $year_diff;
 }
 /*
-	Usage: 
+	Usage:
 	==================
 	echo "Age is: " . birthday ("1984-07-05");
 */
 /***********************************************************/
 
 /*
-*	function to print alert message	
+*	function to print alert message
 	Associated CSS
 	div.alert_inside {
 		background:#FFFF66;
@@ -104,10 +104,10 @@ function printAlert($valid,$alert){
 		echo "'>";
 		for($i=0;$i<sizeof($alert);$i++){
 			echo $alert[$i]."<br>";
-		}	
+		}
 		echo "</div>";
 	}
-	echo "<div class='clear'></div>";	
+	echo "<div class='clear'></div>";
 }
 /***********************************************************/
 
@@ -115,7 +115,7 @@ function printAlert($valid,$alert){
 *	Returns the current file name
 */
 function getFileName(){
-	$full_path=$_SERVER['PHP_SELF'];	
+	$full_path=$_SERVER['PHP_SELF'];
 	$temp=explode('/',$full_path);
 	return $temp[sizeof($temp)-1];
 }
@@ -158,12 +158,12 @@ global $dbname;
 */
 
 function createSelectOptions($dbtableName,$dbtableIdField,$dbtableValueField,$customQuery,$selectedId,$name,$params){
-	$q="SELECT * FROM $dbtableName 
-		$customQuery 
+	$q="SELECT * FROM $dbtableName
+		$customQuery
 		ORDER BY $dbtableValueField ASC";
 	//echo $q;
 	$r=mysql_query($q)or die(mysql_error());
-	
+
 	if(mysql_num_rows($r)){
 		$a=mysql_fetch_rowsarr($r);
 		echo "<select name='$name' $params>";
@@ -179,18 +179,18 @@ function createSelectOptions($dbtableName,$dbtableIdField,$dbtableValueField,$cu
 }
 
 function createMultiSelectOptions($dbtableName,$dbtableIdField,$dbtableValueField,$customQuery,$selectedIdCsv,$name,$params){
-	$q="SELECT * FROM $dbtableName 
-		$customQuery 
+	$q="SELECT * FROM $dbtableName
+		$customQuery
 		ORDER BY $dbtableValueField ASC";
 	//echo $q;
 	$r=mysql_query($q)or die(mysql_error());
-	
+
 	$selectedIdCsvArray=explode(',',trim($selectedIdCsv,', '));
 	if(mysql_num_rows($r)){
 		$a=mysql_fetch_rowsarr($r);
 		echo "<select name='$name' $params>";
 		foreach($a as $b){
-			echo "<option value='".$b[$dbtableIdField]."' ";			
+			echo "<option value='".$b[$dbtableIdField]."' ";
 			if(in_array($b[$dbtableIdField],$selectedIdCsvArray)){echo " selected='selected' ";}
 			echo " >".$b[$dbtableValueField]."</option>";
 		}
@@ -254,7 +254,7 @@ function createMySqlUpdateString($request, $exception_field){
 	foreach($_POST as $k=>$v){
 		if(!in_array($k,$exception_field)){
 			if(!empty($k)){
-				$str_k.="$k='".mysql_real_escape_string(trim($v))."',";				
+				$str_k.="$k='".mysql_real_escape_string(trim($v))."',";
 			}
 		}
 	}
@@ -263,7 +263,7 @@ function createMySqlUpdateString($request, $exception_field){
 }
 
 function convert_number_to_words($number) {
-   
+
     $hyphen      = '-';
     $conjunction = ' and ';
     $separator   = ', ';
@@ -306,11 +306,11 @@ function convert_number_to_words($number) {
         1000000000000000    => 'quadrillion',
         1000000000000000000 => 'quintillion'
     );
-   
+
     if (!is_numeric($number)) {
         return false;
     }
-   
+
     if (($number >= 0 && (int) $number < 0) || (int) $number < 0 - PHP_INT_MAX) {
         // overflow
         trigger_error(
@@ -323,13 +323,13 @@ function convert_number_to_words($number) {
     if ($number < 0) {
         return $negative . convert_number_to_words(abs($number));
     }
-   
+
     $string = $fraction = null;
-   
+
     if (strpos($number, '.') !== false) {
         list($number, $fraction) = explode('.', $number);
     }
-   
+
     switch (true) {
         case $number < 21:
             $string = $dictionary[$number];
@@ -361,7 +361,7 @@ function convert_number_to_words($number) {
             }
             break;
     }
-   
+
     if (null !== $fraction && is_numeric($fraction)) {
         $string .= $decimal;
         $words = array();
@@ -370,7 +370,7 @@ function convert_number_to_words($number) {
         }
         $string .= implode(' ', $words);
     }
-   
+
     return $string;
 }
 
@@ -390,10 +390,10 @@ function my_date_diff($start, $end="NOW")
                 // Minutes + Seconds
                 $pmin = ($edate - $sdate) / 60;
                 $premin = explode('.', $pmin);
-               
+
                 $presec = $pmin-$premin[0];
                 $sec = $presec*60;
-               
+
 			    if($premin[0]>0){
 					$timeshift .= $premin[0].' min ';
 				}
@@ -406,13 +406,13 @@ function my_date_diff($start, $end="NOW")
                 // Hours + Minutes
                 $phour = ($edate - $sdate) / 3600;
                 $prehour = explode('.',$phour);
-               
+
                 $premin = $phour-$prehour[0];
                 $min = explode('.',$premin*60);
-               
+
                 $presec = '0.'.$min[1];
                 $sec = $presec*60;
-				
+
 				if($prehour[0]>0){
 					$timeshift .= $prehour[0].' hrs ';
 				}
@@ -422,7 +422,7 @@ function my_date_diff($start, $end="NOW")
 				if(round($sec,0)>0){
 					$timeshift .= round($sec,0).' sec ';
 				}
-				
+
 
                 //$timeshift = $prehour[0].' hrs '.$min[0].' min '.round($sec,0).' sec ';
 
@@ -436,10 +436,10 @@ function my_date_diff($start, $end="NOW")
 
                 $premin = ($phour*24)-$prehour[0];
                 $min = explode('.',$premin*60);
-               
+
                 $presec = '0.'.$min[1];
                 $sec = $presec*60;
-				
+
 				if($preday[0]>0){
 					$timeshift .= $preday[0].' days ';
 				}
@@ -452,8 +452,8 @@ function my_date_diff($start, $end="NOW")
 				if(round($sec,0)>0){
 					$timeshift .= round($sec,0).' sec ';
 				}
-               
-			   
+
+
                 //$timeshift = $preday[0].' days '.$prehour[0].' hrs '.$min[0].' min '.round($sec,0).' sec ';
 
         }if($time<0){
@@ -466,9 +466,9 @@ function my_hour_diff($start, $end="NOW")
 {
         $sdate = strtotime($start);
         $edate = strtotime($end);
-		
+
         $time = $edate - $sdate;
-		
+
 		//echo "time:$time<br>";
 		$hours=$time/(60*60);
         return $hours;
