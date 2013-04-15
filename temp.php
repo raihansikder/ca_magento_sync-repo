@@ -6,10 +6,16 @@ $hData = array('DeveloperKey' => "5dbb05c3-25bd-40cd-8d0b-bb756614cce3", 'Passwo
 $head = new SoapHeader("http://api.channeladvisor.com/webservices/","APICredentials",$hData);
 //print_r($head);
 $client->__setSoapHeaders($head);
-$result = $client->DoesSkuExist(array("accountID" => "700cd2eb-ff3c-4969-a542-dfde923e14fd","sku" => "FRE3216SLECHILD5"));
+$result = $client->DoesSkuExist(array("accountID" => "700cd2eb-ff3c-4969-a542-dfde923e14fd","sku" => "ELO2188BLKCHILD1"));
 //myprint_r($result);
 // Print the results.
 print $result->DoesSkuExistResult->Status;
+
+
+//updateCAProductQuantity('ELO2188BLKCHILD1',2)
+
+
+
 //var_dump($result);
 /*
 print '<pre>';

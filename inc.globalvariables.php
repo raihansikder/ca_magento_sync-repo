@@ -4,20 +4,19 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE );
 *	Database information and connection
 */
 // Local
-
-$dbhost='localhost';		
-$dbuser='loutlet_lostore';
-$dbpass='ds3c&2ses^7';
-$dbname='loutlet_tloutlet2012new';
-
-// live
 /*
-$dbhost='localhost';		
-$dbuser='smartsec';
-$dbpass='activation';
-$dbname='smartsec_demo1';
-*/  
-mysql_select_db($dbname,mysql_connect($dbhost, $dbuser, $dbpass));
+$dbhost='localhost';
+$dbuser='loutlet_new';
+$dbpass='0Fx~m^Ox%iV!';
+$dbname='loutlet_new';
+*/
+// live
+$dbhost='localhost';
+$dbuser='root';
+$dbpass='';
+$dbname='lingerieoutletstore';
+
+mysql_select_db($dbname,mysql_connect($dbhost, $dbuser, $dbpass))or die(mysql_error());
 
 /*
 * initiate PHPMailer
@@ -33,9 +32,9 @@ $mail->Username = "tes.smartsec@gmail.com"; // SMTP username
 $mail->Password = "activation"; // SMTP password
 //$webmaster_email = "username@doamin.com"; //Reply to this email ID
 //$email="spider.xy@gmail.com"; // Recipients email ID
-//$name="name"; // Recipient's name	
+//$name="name"; // Recipient's name
 $mail->From = "tes.smartsec@gmail.com";
-$mail->FromName = "Tesecurity";	
+$mail->FromName = "Tesecurity";
 $mail->AddReplyTo($_SESSION[current_user_email],$_SESSION[current_user_fullname]);
 $mail->AddCC("tesshaz@gmail.com","Tes Shaz");
 $mail->AddCC("raihan.act@gmail.com","Raihan");
