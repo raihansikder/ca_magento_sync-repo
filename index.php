@@ -73,7 +73,7 @@ foreach ($categories as $category) {
 
 		//echo $MageProductSku."[".$MageProductQty."]<br>";
 		$i++;
-		//if($i==2)break;
+		if($i==2)break;
     }
 
 }
